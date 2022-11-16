@@ -1,0 +1,23 @@
+{% extends 'my_site/navbar.html'%}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <head>
+        <title>О компании</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="{% static 'css/news.css' %}" rel="stylesheet">
+        <style>
+            body {
+                min-height: 100vh;
+                background: #e9e9e9;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="container mt-4">
+        <h1>О КОМПАНИИ</h1>
+        <hr>
+    </div>
+    </body>
+{% endblock %}

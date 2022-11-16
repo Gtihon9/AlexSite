@@ -1,0 +1,67 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
+  <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
+  <style>
+    .pl{
+      padding-right: 1rem;
+      padding-left: 1rem;
+    }
+    body{
+        min-height: 100vh;
+        background: #e9e9e9;
+    }
+  </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark h2"
+      style="margin-bottom: unset; border-radius: unset;">
+  <div class="container mt-4">
+  <a class="navbar-text h1 pl text-center" style="padding-left: 0!important; margin-left: 0!important;" href="#">Дереворесурсы</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse d-flex" style="align-items: unset;" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item pl">
+        <a class="nav-link navbar_link" href="{% url 'home' %}">Главная</a>
+      </li>
+      <li class="nav-item pl">
+        <a class="nav-link navbar_link " href="{% url 'gallery' %}">Галерея</a>
+      </li>
+      <li class="nav-item pl">
+        <a class="nav-link navbar_link" href="{% url 'product_list_view' %}" style="width:200; height: 150;">Каталог</a>
+      </li>
+      <li class="nav-item pl">
+        <a class="nav-link navbar_link"  href="{% url 'contacts' %}">Контакты</a>
+      </li>
+      <li class="nav-item pl">
+        <a class="nav-link navbar_link" href="{% url 'about' %}">О компании</a>
+      </li>
+      <li class="nav-item pl">
+        <a class="nav-link navbar_link" href="{% url 'news' %}">Новости</a>
+      </li>
+    </ul>
+
+  </div>
+    </div>
+</nav>
+
+
+{% block content %}
+
+{% endblock %}
+
+</body>
+</html>

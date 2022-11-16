@@ -1,0 +1,41 @@
+{% extends 'my_site/navbar.html'%}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <head>
+        <title>Главная</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="main-page" style="background: url('/../../media/wood.jpg'); height: 70vh; opacity: 90%;
+                                margin-bottom: 0.5rem;">
+            <div class="container text-center" style="padding-top: 10%; padding-bottom: 10%;">
+                <h1 class="h1 text-white">ПИЛОМАТЕРИАЛЫ</h1>
+                <div class="h2 text-bottom text-light">
+                    <p>Пиломатериалы <strong>Доска пола, вагонка, имитация бруса, блок-хаус</strong> в Минске.</p>
+                </div>
+            </div>
+        </div>
+        <div class="main-page" style="background-color: #e1e1e1; height: 70vh; opacity: 90%;
+                                margin-bottom: 0.8rem;">
+            <div class="container text-center" style="padding-top: 10%; padding-bottom: 10%;">
+                <h1 class="h1 text-black">ПИЛОМАТЕРИАЛЫ</h1>
+                <div class="h2 text-bottom text-black">
+                    <p>Пиломатериалы <strong>Доска пола, вагонка, имитация бруса, блок-хаус</strong> в Минске.</p>
+                </div>
+            </div>
+        </div>
+        <div class="main-page" style="background-color: #e1e1e1; height: 70vh; opacity: 90%;
+                                margin-bottom: 0.8rem; border-radius: 5px;">
+            <div class="container text-center" style="padding-top: 10%; padding-bottom: 10%;">
+                <h1 class="h1 text-black">ПИЛОМАТЕРИАЛЫ</h1>
+                <div class="h2 text-bottom text-black">
+                    <p>Пиломатериалы <strong>Доска пола, вагонка, имитация бруса, блок-хаус</strong> в Минске.</p>
+                </div>
+            </div>
+        </div>
+    </body>
+{% endblock %}
