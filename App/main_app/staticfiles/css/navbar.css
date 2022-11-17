@@ -27,6 +27,6 @@
 .navbar_link:hover::after{
 	height: calc(100% + 8px)
 }
-.collapse[aria-expanded="true"]{
-  opacity: 0;
+#navbarSupportedContent[aria-expanded="false"]{
+    opacity: 0!important;
 }
