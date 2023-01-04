@@ -6,23 +6,84 @@
         <title>Контакты</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <link href="{% static 'css/news.css' %}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css">
 
+        <link rel="stylesheet" type="text/css" href="{% static 'css/contacts.css' %}">
         <style>
             body {
                 min-height: 100vh;
                 background: #e9e9e9;
             }
+            #id_text {
+              height: 200px;       /*  where you give it same height as your select  */
+            }
         </style>
     </head>
     <body>
+
         <div class="container mt-4">
-            <h1 class="font-weight-normal">КОНТАКТЫ</h1>
+            {% include 'my_site/messages.html' %}
+            <h1 class="font-weight-normal text-center mb-4 mt-4">КОНТАКТЫ</h1>
             <hr>
+            <h1 class="text-center mt-4 font-weight-bold" style="margin-bottom: 50px;">КОНТАКТНАЯ ИНФОРМАЦИЯ</h1>
+            <div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form method="POST" class="post-form">
+                                <form id="algin-form">
+                                    <div class="form-group">
+                                        <h3 class="custom-text text-muted font-weight-normal" >СООБЩЕНИЕ ИЛИ КОММЕНТАРИЙ</h3>
+                                        <div class="input-group mb-4">{{ report_message_form.text }}</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <h3 class="text-muted font-weight-normal">ИМЯ</h3>
+                                        <div class="input-group mb-4">{{ report_message_form.author_name }}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <h3 class="text-muted font-weight-normal">E-MAIL</h3>
+                                        <div class="input-group mb-4">{{ report_message_form.email }}</div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between mt-4 mb-4">
+                                       {% csrf_token %}
+                                       <button type="submit" class=" btn btn-block" style="background-color: #9f9f9f; border-radius: 5px;"> <div class="h3 mb-0 text-dark">ОТПРАВИТЬ</div> </button>
+                                    </div>
+                                </form>
+                        </form>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="h3 text-muted">Если есть вопросы то задавайте свой вопрос и получите ответ <br>Адрес для связи email: belantra2011@mail.ru</div>
+                        <br>
+                        <br>
+                        <div>
+                            <div class="h3" style="margin-bottom: 20px">Задайте свой вопрос и получите ответ:</div>
+                            <div class="h4 text-muted mb-4">
+                                <span class="glyphicon glyphicon-map-marker mr-3">
+                                </span>
+                                г.Минск, ул.Меньковский тракт, 21, оф. 8
+                            </div>
+
+                            <div class="h4 text-muted mb-4">
+                                <span class="glyphicon glyphicon-earphone mr-3"></span>
+                                +375 (29) 685-46-65 ,+375 (29) 153-31-21 ,+375 (17) 541-87-50
+                            </div>
+
+                            <div class="h4 text-muted mb-4">
+                                <span class="glyphicon glyphicon-envelope mr-3"></span>
+                                belantra2011@mail.ru
+                            </div>
+                            <div class="h4 text-muted mb-4">
+                                <span class="glyphicon glyphicon-print mr-3"></span>
+                                +375 (17) 507-67-12
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </body>
 {% endblock %}

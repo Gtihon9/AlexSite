@@ -21,39 +21,114 @@
             </head>
             <body>
                 <div class="container mt-4">
+                    {% include 'my_site/messages.html' %}
                      <div class="row">
+
+
                          <div class="col-sm">
                               <img src="{{ product.photo.url }}"  alt="" class="img-fluid d-block mx-auto mb-3">
                         </div>
                         <div class="col-sm">
-                            <h1 class="mb-4 font-weight-bold">{{ product.name }}</h1>
+                            <div class="col-sm ml-0 pl-0">
+                                <h1 class=" mb-4 font-weight-bold">{{ product.name }}</h1>
+                                 <a href="{% url 'view_cart' %}" class="top-0 end-0 position-absolute">
+                                     <h2 class="text-dark 	glyphicon glyphicon-shopping-cart"></h2>
+                                 </a>
+                            </div>
                             <h2 class="mb-4 font-weight-normal">{{ product.price }} BYN</h2>
+                            {% if product.price > 60.0%}
+                                <h5 class="text-muted font-italic mb-4">*Цена указана за 1кв.м</h5>
+                            {% endif %}
                             <h4 class="text-muted font-italic mb-4">{{ product.size}}</h4>
 
-                            <div class="col-md-4 quantity">
-                                <input id="quantity" type="number" value ="1" class="form-control quantity-input">
+                            <div class="col-md-4 text-center pl-0 ">
+                                <form method="POST" class="post-form" name="cart" >
+
+                                    <input type='number' id="{{ product.pk }}" value={{quantity|default:1}}
+                                           name='quantity' style="font-size: 15px; font-weight: 400;"/>
+                                    {% csrf_token %}
+                                    <button type="submit" class=" btn  mt-4"
+                                            style="background-color: #9f9f9f; border-radius: 5px;">
+                                        <div class="h5 mb-0 text-dark">Добавить в корзину</div>
+                                    </button>
+                                </form>
                             </div>
-                            <div class="col-md-4 text-center "><div class="button btn-danger">Shop</div></div>
-                        </div>
+
                       </div>
                 </div>
                 <div class="container mt-4 tabset">
                       <!-- Tab 1 -->
                       <input type="radio" name="tabset" id="tab1" aria-controls="description" checked>
-                      <label for="tab1">Описание</label>
+                      <label for="tab1" class="h3">Описание</label>
                       <!-- Tab 2 -->
                       <input type="radio" name="tabset" id="tab2" aria-controls="reviews">
-                      <label for="tab2">Отзывы</label>
+                      <label for="tab2" class="h3">Отзывы({{ product.comments.count}})</label>
 
 
                       <div class="tab-panels">
                         <section id="description" class="tab-panel">
                             <h3>{{ product.description|safe }}</h3>
                       </section>
-                        <section id="reviews" class="tab-panel">
-                            <h2>Отзывы</h2>
+                        <section id="comments" class="tab-panel">
+                            {% for comment in product.comments.all %}
+                            <div class="card mb-4 comment1 border border-2 border-secondary " style="color: black;border-radius: 0.6rem; background-color: #E3E3E3">
+
+                                <div class="card-body ">
+                                    <div class="d-flex justify-content-between">
+                                      <div class="p-2">
+                                            <h3>{{ comment.text|linebreaks }}</h3>
+                                      </div>
+
+                                    </div>
+
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <h4 class="font-weight-bold">{{ comment.author_name }}</h4>
+                                        </div>
+                                        <div class="d-grid gap-2  justify-content-md-end">
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center">
+                                            {{ comment.created_date }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                              </div>
+                            {% empty %}
+                                <p>{{ comment.text|linebreaks }}</p>
+                            {% endfor %}
+                            <hr>
+                            <form method="POST" class="post-form" name="comment">
+                                  <div class="col-lg-4 mt-4 ">
+                                                <form id="algin-form">
+                                                    <h4>Добавить комментарий</h4>
+                                                    <div class="form-group">
+                                                        <label>Сообщение</label>
+                                                        <div class="input-group mb-3">{{ comment_form.text }}</div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Имя</label>
+                                                        <div class="input-group mb-3">{{ comment_form.author_name }}</div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label >Email</label>
+                                                        <div class="input-group mb-3">{{ comment_form.email }}</div>
+                                                    </div>
+
+                                                    <div class="d-flex justify-content-center mt-3">
+                                                       {% csrf_token %}
+                                                        <button type="submit" class=" btn  mt-4"
+                                                                style="background-color: #9f9f9f; border-radius: 5px;">
+                                                            <div class="h5 mb-0 text-dark">Добавить комментарий</div>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                  </form>
                         </section>
                       </div>
+
 
                     </div>
             </body>

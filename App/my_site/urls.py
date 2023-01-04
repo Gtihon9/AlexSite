@@ -4,6 +4,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from . import views
+from . import cart
+
+
 
 
 urlpatterns = [
@@ -16,5 +19,8 @@ urlpatterns = [
 
     path('product/<int:pk>', views.detail_view, name="detail"),
 
+    path('cart/', cart.view_cart, name="view_cart"),
+    path('cart/delete/<int:pk>', cart.delete_cart_item, name="delete_cart_item"),
+    path('cart/add/<int:pk>', cart.add_cart_item, name="add_cart_item"),
     path('', views.home_page, name='home'),
 ]
